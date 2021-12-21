@@ -1,0 +1,230 @@
+<!DOCTYPE html>    
+<html>    
+<head>    
+<meta name="viewport" content="width=device-width, initial-scale=1">    
+<style>    
+* {    
+  box-sizing: border-box;    
+}    
+
+body{
+    background-color:rgb(37, 38, 39);
+}
+    
+body h2{
+    color:white;
+    text-align: center;
+}
+input[type=text], select, textarea {    
+  width: 100%;    
+  padding: 12px;    
+  border: 1px solid rgb(70, 68, 68);    
+  border-radius: 4px;    
+  resize: vertical;    
+}    
+input[type=email], select, textarea {    
+  width: 100%;    
+  padding: 12px;    
+  border: 1px solid rgb(70, 68, 68);    
+  border-radius: 4px;    
+  resize: vertical;    
+}  
+
+input[type=number], select {    
+  width: 100%;    
+  padding: 12px;    
+  border: 1px solid rgb(70, 68, 68);    
+  border-radius: 4px;    
+  resize: vertical;  
+} 
+label {    
+  padding: 12px 12px 12px 0;    
+  display: inline-block;    
+}    
+    
+input[type=submit] {    
+  background-color: rgb(37, 116, 161);    
+  color: white;    
+  padding: 12px 20px;    
+  border: none;    
+  border-radius: 4px;    
+  cursor: pointer;    
+  float: right;    
+  margin-top: 20px;
+}    
+    
+input[type=submit]:hover {    
+  background-color: #45a049;    
+}    
+    
+.container {    
+  border-radius: 5px;    
+  background-color: #f2f2f2;    
+  padding: 20px;    
+}    
+    
+.col-25 {    
+  float: left;    
+  width: 25%;    
+  margin-top: 6px;    
+}    
+    
+.col-75 {    
+  float: left;    
+  width: 75%;    
+  margin-top: 6px;    
+}    
+    
+/* Clear floats after the columns */    
+.row:after {    
+  content: "";    
+  display: table;    
+  clear: both;    
+}    
+    
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */    
+</style>    
+</head>    
+<body>    
+<h2>Stroke Prediction</h2>   
+
+<div class="container">    
+  <form method="post" enctype="multipart/form-data" action="predict">    
+    <div class="row">    
+      <div class="col-25">    
+        <label for="name">Name</label>    
+      </div>    
+      <div class="col-75">    
+        <input type="text" id="name" name="name" placeholder="Your name..">    
+      </div>    
+    </div>    
+
+    <div class="row">    
+        <div class="col-25">    
+          <label for="age">Age</label>    
+        </div>    
+        <div class="col-75">    
+          <input type="number" min="1" id="age" name="age" placeholder="Your Age is...(numbers)">    
+        </div>    
+      </div> 
+
+      <div class="row">    
+        <div class="col-25">    
+          <label for="gender">Gender</label>    
+        </div>  
+        <div class="col-75"> 
+          <label class="radio-inline"><input type="radio" name="gender" value="male" checked>Male</label>
+          <label class="radio-inline"><input type="radio" name="gender" value="female">Female</label>
+      </div> 
+    </div> 
+
+    <div class="row">    
+      <div class="col-25">    
+        <label for="cardiac">Have you encountered Cardiac disease?</label>    
+      </div>  
+      <div class="col-75"> 
+        <label class="radio-inline"><input type="radio" name="cardiac" value="yes" checked>Yes</label>
+        <label class="radio-inline"><input type="radio" name="cardiac" value="no">No</label>
+    </div> 
+  </div>
+  <div class="row">    
+    <div class="col-25">    
+      <label for="cardiac">Have you encountered Hypertension?</label>    
+    </div>  
+    <div class="col-75"> 
+      <label class="radio-inline"><input type="radio" name="hyper" value="yes" checked>Yes</label>
+      <label class="radio-inline"><input type="radio" name="hyper" value="no">No</label>
+  </div> 
+</div>  
+
+  <div class="row">    
+    <div class="col-25">    
+      <label for="marriage">Married?</label>    
+    </div>  
+    <div class="col-75"> 
+      <label class="radio-inline"><input type="radio" name="marriage" value="yes" checked>Yes</label>
+      <label class="radio-inline"><input type="radio" name="marriage" value="no">No</label>
+  </div> 
+  </div> 
+  <div class="row">    
+    <div class="col-25">    
+      <label for="marriage">Children?</label>    
+    </div>  
+    <div class="col-75"> 
+      <label class="radio-inline"><input type="radio" name="children" value="yes" checked>Yes</label>
+      <label class="radio-inline"><input type="radio" name="children" value="no">No</label>
+  </div> 
+  </div>
+  
+    <div class="row">    
+      <div class="col-25">    
+        <label for="work">Work Type</label>    
+      </div>    
+      <div class="col-75">    
+        <select id="work" name="work">    
+            <option value="none" disabled>Select work type</option> 
+            <option value="Unemployed">Unemployed</option>  
+            <option value="Private">Private</option>   
+            <option value="SelfEmployed">Self Employed</option>    
+            <option value="Neverworked">Never worked</option> 
+            <option value="Government">Government job</option>   
+        </select>    
+      </div>    
+    </div>  
+
+    <div class="row">    
+      <div class="col-25">    
+        <label for="residence">Residence</label>    
+      </div>  
+      <div class="col-75"> 
+        <label class="radio-inline"><input type="radio" name="residence" value="city" checked>City</label>
+        <label class="radio-inline"><input type="radio" name="residence" value="village">Village</label>
+    </div> 
+    </div> 
+     
+    <div class="row">    
+      <div class="col-25">    
+        <label for="glucose">Glucose Level</label>    
+      </div>  
+      <div class="col-75"> 
+        <input type="text" id="glucose" name="glucose">    
+    </div> 
+    </div> 
+
+    <div class="row">    
+      <div class="col-25">    
+        <label for="smoke">Smoking status</label>    
+      </div>  
+      <div class="col-75"> 
+        <label class="radio-inline"><input type="radio" name="smoke" value="never"checked>Never</label>
+        <label class="radio-inline"><input type="radio" name="smoke" value="formerly">Formerly</label>
+        <label class="radio-inline"><input type="radio" name="smoke" value="smoker">Smoker</label>
+    </div> 
+    </div> 
+    
+    <div class="row">    
+      <div class="col-25">    
+        <label for="height">Height</label>    
+      </div>    
+      <div class="col-75">    
+        <input type="number" min="1" id="height" name="height" placeholder="Your Height is...(numbers)">    
+      </div>    
+    </div> 
+
+    <div class="row">    
+      <div class="col-25">    
+        <label for="weight">Weight</label>    
+      </div>    
+      <div class="col-75">    
+        <input type="number" min="1" id="weight" name="weight" placeholder="Your Weight is...(numbers)">    
+      </div>    
+    </div> 
+
+    <div class="row">    
+      <input type="submit" value="Submit">    
+    </div>    
+  </form>    
+</div>    
+    
+</body>    
+</html>    
